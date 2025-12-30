@@ -8,7 +8,7 @@ jobs:
   static-analysis: # mypy, black, ruff 등 정적 분석
     runs-on: ubuntu-22.04 # 운영할 버전을 고정하는 것이 좋다.
     # 예기치 못하게 버전이 올라가서 장애나는 것을 막기 위해
-    stpes:
+    steps:
       - name: Check out the codes
         uses: actions/checkout@v2
 
@@ -39,7 +39,7 @@ jobs:
       - name: Run mypy
         run: poetry run mypy .
 
-    test: # 테스트 실행 한다
+  test: # 테스트 실행 한다
       runs-on: ubuntu-22.04
       steps:
         - name: Check out the codes

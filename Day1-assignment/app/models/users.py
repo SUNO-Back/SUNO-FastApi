@@ -1,4 +1,4 @@
-# app/models/users.py
+# app2/models/users.py
 
 import random
 

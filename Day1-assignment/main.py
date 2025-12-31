@@ -1,7 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from app.models.users import UserModel
-
+from app.schemas.users import UserCreateRequest
 
 app = FastAPI()
 
@@ -23,7 +23,7 @@ async def get_all_users():
 
 
 @app.get("/users/{user_id}")
-async def get_user(user_id: int = Path(gt=0)):
+async def get_user(user_id: int):
     user = UserModel.get(id=user_id)
     if user is None:
         raise HTTPException(status_code=404)

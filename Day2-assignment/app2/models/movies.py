@@ -1,4 +1,4 @@
-# app/models/movies.py
+# app2/models/movies.py
 
 import random
 

@@ -36,10 +36,7 @@ class MovieModel:
         result = [
             movie
             for movie in cls._data
-            if all(
-                getattr(movie, key) == value or value in getattr(movie, key)
-                for key, value in kwargs.items()
-            )
+            if all(getattr(movie, key) == value or value in getattr(movie, key) for key, value in kwargs.items())
         ]
 
         return result
@@ -67,9 +64,7 @@ class MovieModel:
             cls.create(
                 title=f"dummy_movie {i}",
                 playtime=random.randint(100, 300),
-                genre=random.sample(
-                    ["SF", "Romantic", "Adventure", "Action", "Comedy", "Horror"], k=3
-                ),
+                genre=random.sample(["SF", "Romantic", "Adventure", "Action", "Comedy", "Horror"], k=3),
             )
 
     def __repr__(self):

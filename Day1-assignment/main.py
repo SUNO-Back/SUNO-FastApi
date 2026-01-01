@@ -1,5 +1,7 @@
-from fastapi import FastAPI, HTTPException
-
+from fastapi import FastAPI, HTTPException, Path
+from typing import Annotated
+from fastapi import Query
+from app.schemas.users import UserSearchParams
 from app.models.users import UserModel
 from app.schemas.users import UserCreateRequest
 
@@ -28,6 +30,24 @@ async def get_user(user_id: int):
     if user is None:
         raise HTTPException(status_code=404)
     return user
+
+
+@app.delete('/users/{user_id}')
+async def delete_user(user_id: int = Path(gt=0)):
+	user = UserModel.get(id=user_id)
+	if user is None:
+		raise HTTPException(status_code=404)
+	user.delete()
+
+	return {'detail': f'User: {user_id}, Successfully Deleted.'}
+
+@app.get('/users/search')
+async def search_users(query_params: Annotated[UserSearchParams, Query()]):
+	valid_query = {key: value for key, value in query_params.model_dump().items() if value is not None}
+	filtered_users = UserModel.filter(**valid_query)
+	if not filtered_users:
+	    raise HTTPException(status_code=404)
+	return 	filtered_users
 
 
 if __name__ == "__main__":

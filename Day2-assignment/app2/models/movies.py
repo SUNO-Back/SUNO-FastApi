@@ -1,5 +1,3 @@
-# app2/models/movies.py
-
 import random
 
 

@@ -1,5 +1,3 @@
-# app2/models/users.py
-
 import random
 
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel
+from pydantic import BaseModel,gt
 
 
 class GenderEnum(str, Enum):
@@ -17,3 +17,11 @@ class UserCreateRequest(BaseModel):
 class UserUpdateRequest(BaseModel):
     username: str | None = None
     age: int | None = None
+
+
+class UserSearchParams(BaseModel):
+    model_config = {"extra": "forbid"}
+
+    username: str | None = None
+    age: conint(gt=0) | None = None
+    gender: GenderEnum | None = None

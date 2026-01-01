@@ -25,5 +25,3 @@ class User(BaseModel):
 코드 작성 할때 -> mypy
 요청 받을 때 -> FastAPI + Pydantic
 테스트 때 -> pytest
-
-

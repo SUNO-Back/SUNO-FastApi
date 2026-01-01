@@ -1,0 +1,29 @@
+FastApi
+- FastAPI는 Python타입 힌트를 기반으로 빠르고 안전하게 API를 만드는 웹 프레임 워크
+
+'''''''''''''''''''''''''''''''''''
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    return {"user_id": user_id}
+'''''''''''''''''''''''''''''''''''
+user_id가 int가 아니면 자동으로 에러가 나온다.
+그리고 Flask보다 빠르다
+또한 Pydantic을 사용해 데이터 검증이 자동으로 처리된다
+
+타입검증?
+- 데이터가 '이런 모양이어야 한다'는걸 실행 전/중 에 확인 하는것이다
+'''''''''''''''''''''''''''''''''''
+from pydantic import BaseModel
+
+class User(BaseModel):
+    name: str
+    age: int
+'''''''''''''''''''''''''''''''''''
+이렇게 하면 name은 글자, age는 숫자로 와야한다는걸 알 수 있다.
+
+타입검증은 3단계로 나눌 수 있다
+코드 작성 할때 -> mypy
+요청 받을 때 -> FastAPI + Pydantic
+테스트 때 -> pytest
+
+

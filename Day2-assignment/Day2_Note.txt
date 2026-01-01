@@ -1,0 +1,33 @@
+Shell Script란?
+- 리눅스/유닉스 쉘에서 실행되는 명령어들의 묶음이다
+- 사람이 터미널에 하나씩 쳤던 명령을 파일(.sh)로 만들어 자동실행
+사용되는 이유는 ?
+- 반복 작업 자동화
+- 배포,테스트 스크립트 작성
+- CI/CD에서 기본 실행 단위 이다. 그리고 딱봐도 편해보인다
+
+Github Actions
+- GitHub에서 제공하는 CI/CD 자동화 도구
+- 코드 변경 시 자동으로 테스트, 빌드, 배포 수행
+- 여기서 핵심은 .github/workflows/*.yml 파일로 정의해야 한다 그리고 이건 GitHub서버에서 실행된다.
+사용되는 이유는?
+- PR(pull request) 올리면 자동 테스트
+- push시 린트/ 타입체크/ 테스트 실행
+- 배포 자동화
+
+Github Actions의 흐름
+1. 이벤트 발생
+   (push, pull_request 등)
+        ↓
+2. workflow 실행
+        ↓
+3. job 실행
+        ↓
+4. step 순서대로 실행
+   (shell script, action)
+
+Spec API
+- API가 어떻게 동작해야 하는지를 정의한 문서
+- 실제로 구현전에 규칙을 먼저 정함
+- 대표적인 Spec : OpenApi(Swagger),GraphQL Schema
+URL,HTTP Method, Request/Response 구조, Status Code를 포함한다.
